@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var box1,box2,box3,box4,box5,box6,box7,box8,box9,box10,box11,box12,box13,box14,box15,box16,box17,box18,box19,box20,box21,box22;
-var ball, slingShot,ground,platform;
+var ball, slingShot,ground,platform,score;
 
     
 function setup(){
@@ -42,6 +42,8 @@ function setup(){
     ball = new Ball(100,100,30,30);
 
     slingShot = new SlingShot(ball.body,{x:200,y:200});
+
+    score = 100;
 }
 
 function draw(){
@@ -74,6 +76,24 @@ function draw(){
     ball.display();
     platform.display();
     slingShot.display(); 
+
+    text("Time: "+ score, 500,50);
+
+if(score===0){
+    text("GAME OVER",500,80);
+}
+
+if(score>0){
+    if (frameCount % 60 === 0) {
+        score = score-1;
+      }
+}
+
+if((box1.Visibility<255 && box2.Visibility<255 && box3.Visibility<255 && box4.Visibility<255 && box5.Visibility<255 && box6.Visibility<255 && box7.Visibility<255 && box8.Visibility<255 && box9.Visibility<255 && box10.Visibility<255 && box11.Visibility<255 && box12.Visibility<255 && box13.Visibility<255 && box14.Visibility<255 && box15.Visibility<255 && box16.Visibility<255 && box17.Visibility<255 && box18.Visibility<255 && box19.Visibility<255 && box20.Visibility<255 && box21.Visibility<255 && box22.Visibility<255 ) && score>0){
+    text("YOU WON",500,100);
+}
+
+
 }
 
 function mouseDragged(){
